@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         MAIN APP CONTAINER
+    ======================================== -->
+
+    <div class="app-container">
+
+
+        <!-- ========================================
+             LEFT SIDEBAR
+        ======================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- ========================================
+                 COLLEGE LOGO + NAME
+            ======================================== -->
+
+            <div class="college-header">
+
+                <img
+                    src="college-logo.png"
+                    alt="Prathyusha Engineering College Logo"
+                >
+
+                <h2>
+                    PRATHYUSHA<br>
+                    ENGINEERING<br>
+                    COLLEGE
+                </h2>
+
+            </div>
+
+
+            <!-- ========================================
+                 SIDEBAR MENU
+            ======================================== -->
+
+            <nav class="sidebar-nav">
+
+
+                <!-- Dashboard -->
+
+                <button onclick="showSection('dashboard')">
+                    🏠 Dashboard
+                </button>
+
+
+                <!-- Student List -->
+
+                <button onclick="showSection('students')">
+                    👨‍🎓 Student List
+                </button>
+
+
+                <!-- Add Student -->
+
+                <button onclick="showSection('addStudent')">
+                    ➕ Add Student
+                </button>
+
+
+                <!-- Theme Button -->
+
+                <button
+                    class="theme-btn"
+                    onclick="toggleTheme()"
+                >
+                    🌙 Dark Mode
+                </button>
+
+
+            </nav>
+
+
+        </aside>
+
+
+
+        <!-- ========================================
+             RIGHT SIDE MAIN CONTENT
+        ======================================== -->
+
+        <main class="main-content">
+
+
+
+            <!-- ========================================
+                 DASHBOARD SECTION
+            ======================================== -->
+
+            <section id="dashboard" class="section">
+
+
+                <h1>Dashboard</h1>
+
+
+                <div class="dashboard-container">
+
+
+                    <!-- Total Students -->
+
+                    <div class="card">
+
+                        <h3>Total Students</h3>
+
+                        <p id="totalStudents">0</p>
+
+                    </div>
+
+
+                    <!-- IT Students -->
+
+                    <div class="card">
+
+                        <h3>IT Students</h3>
+
+                        <p id="itCount">0</p>
+
+                    </div>
+
+
+                    <!-- CSE Students -->
+
+                    <div class="card">
+
+                        <h3>CSE Students</h3>
+
+                        <p id="cseCount">0</p>
+
+                    </div>
+
+
+                    <!-- ECE Students -->
+
+                    <div class="card">
+
+                        <h3>ECE Students</h3>
+
+                        <p id="eceCount">0</p>
+
+                    </div>
+
+
+                    <!-- EEE Students -->
+
+                    <div class="card">
+
+                        <h3>EEE Students</h3>
+
+                        <p id="eeeCount">0</p>
+
+                    </div>
+
+
+                    <!-- MECH Students -->
+
+                    <div class="card">
+
+                        <h3>MECH Students</h3>
+
+                        <p id="mechCount">0</p>
+
+                    </div>
+
+
+                    <!-- BIO-TECH Students -->
+
+                    <div class="card">
+
+                        <h3>BIO-TECH Students</h3>
+
+                        <p id="biotechCount">0</p>
+
+                    </div>
+
+
+                    <!-- AIDS Students -->
+
+                    <div class="card">
+
+                        <h3>AIDS Students</h3>
+
+                        <p id="aidsCount">0</p>
+
+                    </div>
+
+
+                    <!-- AIML Students -->
+
+                    <div class="card">
+
+                        <h3>AIML Students</h3>
+
+                        <p id="aimlCount">0</p>
+
+                    </div>
+
+
+                    <!-- CYBER Students -->
+
+                    <div class="card">
+
+                        <h3>CYBER Students</h3>
+
+                        <p id="cyberCount">0</p>
+
+                    </div>
+
+
+                    <!-- CSBS Students -->
+
+                    <div class="card">
+
+                        <h3>CSBS Students</h3>
+
+                        <p id="csbsCount">0</p>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ========================================
+                 STUDENT LIST SECTION
+            ======================================== -->
+
+            <section id="students" class="section">
+
+
+                <h1>Student List</h1>
+
+
+                <!-- Search -->
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by Register Number or Name"
+                    onkeyup="displayStudents()"
+                >
+
+
+                <!-- Department Filter -->
+
+                <select
+                    id="departmentFilter"
+                    onchange="displayStudents()"
+                >
+
+                    <option value="">
+                        All Departments
+                    </option>
+
+                    <option value="IT">
+                        IT
+                    </option>
+
+                    <option value="CSE">
+                        CSE
+                    </option>
+
+                    <option value="ECE">
+                        ECE
+                    </option>
+
+                    <option value="EEE">
+                        EEE
+                    </option>
+
+                    <option value="MECH">
+                        MECH
+                    </option>
+
+                    <option value="BIO-TECH">
+                        BIO-TECH
+                    </option>
+
+                    <option value="AIML">
+                        AIML
+                    </option>
+
+                    <option value="AIDS">
+                        AIDS
+                    </option>
+
+                    <option value="CYBER">
+                        CYBER
+                    </option>
+
+                    <option value="CSBS">
+                        CSBS
+                    </option>
+
+                </select>
+
+
+                <!-- Sorting -->
+
+                <select
+                    id="sortOption"
+                    onchange="displayStudents()"
+                >
+
+                    <option value="">
+                        Sort By
+                    </option>
+
+                    <option value="nameAsc">
+                        Name A-Z
+                    </option>
+
+                    <option value="nameDesc">
+                        Name Z-A
+                    </option>
+
+                    <option value="regAsc">
+                        Register Number Ascending
+                    </option>
+
+                    <option value="regDesc">
+                        Register Number Descending
+                    </option>
+
+                </select>
+
+
+
+                <!-- Student Table -->
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Register Number</th>
+
+                            <th>Name</th>
+
+                            <th>Department</th>
+
+                            <th>Year</th>
+
+                            <th>Semester</th>
+
+                            <th>Email</th>
+
+                            <th>Phone</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                        <!-- JavaScript will add student rows here -->
+
+                    </tbody>
+
+                </table>
+
+
+            </section>
+
+
+
+            <!-- ========================================
+                 ADD STUDENT SECTION
+            ======================================== -->
+
+            <section id="addStudent" class="section">
+
+
+                <h1>Add Student</h1>
+
+
+                <form id="studentForm">
+
+
+                    <!-- Register Number -->
+
+                    <label for="registerNo">
+                        Register Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerNo"
+                        placeholder="Enter Register Number"
+                    >
+
+
+                    <!-- Student Name -->
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter Student Name"
+                    >
+
+
+                    <!-- Email -->
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter Email Address"
+                    >
+
+
+                    <!-- Phone -->
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="Enter 10 Digit Phone Number"
+                    >
+
+
+                    <!-- Department -->
+
+                    <label for="department">
+                        Department
+                    </label>
+
+                    <select id="department">
+
+                        <option value="">
+                            Select Department
+                        </option>
+
+                        <option value="IT">
+                            IT
+                        </option>
+
+                        <option value="CSE">
+                            CSE
+                        </option>
+
+                        <option value="ECE">
+                            ECE
+                        </option>
+
+                        <option value="EEE">
+                            EEE
+                        </option>
+
+                        <option value="MECH">
+                            MECH
+                        </option>
+
+                        <option value="BIO-TECH">
+                            BIO-TECH
+                        </option>
+
+                        <option value="AIML">
+                            AIML
+                        </option>
+
+                        <option value="AIDS">
+                            AIDS
+                        </option>
+
+                        <option value="CYBER">
+                            CYBER
+                        </option>
+
+                        <option value="CSBS">
+                            CSBS
+                        </option>
+
+                    </select>
+
+
+                    <!-- Year -->
+
+                    <label for="year">
+                        Year
+                    </label>
+
+                    <select id="year">
+
+                        <option value="">
+                            Select Year
+                        </option>
+
+                        <option value="I">
+                            I
+                        </option>
+
+                        <option value="II">
+                            II
+                        </option>
+
+                        <option value="III">
+                            III
+                        </option>
+
+                        <option value="IV">
+                            IV
+                        </option>
+
+                    </select>
+
+
+                    <!-- Semester -->
+
+                    <label for="semester">
+                        Semester
+                    </label>
+
+                    <select id="semester">
+
+                        <option value="">
+                            Select Semester
+                        </option>
+
+                        <option value="I">
+                            I
+                        </option>
+
+                        <option value="II">
+                            II
+                        </option>
+
+                        <option value="III">
+                            III
+                        </option>
+
+                        <option value="IV">
+                            IV
+                        </option>
+
+                        <option value="V">
+                            V
+                        </option>
+
+                        <option value="VI">
+                            VI
+                        </option>
+
+                        <option value="VII">
+                            VII
+                        </option>
+
+                        <option value="VIII">
+                            VIII
+                        </option>
+
+                    </select>
+
+
+                    <!-- Submit Button -->
+
+                    <button type="submit">
+                        Add Student
+                    </button>
+
+
+                </form>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         CONNECT JAVASCRIPT
+    ======================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
